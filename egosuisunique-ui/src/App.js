@@ -1,16 +1,19 @@
 import React from 'react';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Login from './components/login/login.component'
 import Welcome from './components/welcome/welcome.component'
 import { auth } from './firebase/firebase.utils';
+import { ApolloProvider } from 'react-apollo';
+import ApolloClient from "apollo-boost";
 
-const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
+
+
+const user = new ApolloClient({
+  uri: "http://localhost:4000/category",
 });
+
 
 class App extends React.Component {
 
@@ -36,12 +39,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <ApolloProvider client={client}>
+      <ApolloProvider client={user}>
         <Switch>
          <Route exact path='/' component={ Login }></Route>
          <Route exact path='/welcome' component= { Welcome }></Route>
         </Switch>
-      </ApolloProvider>
+        </ApolloProvider>
     );
   }
  

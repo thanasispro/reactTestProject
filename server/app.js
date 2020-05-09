@@ -12,6 +12,8 @@ const user = require('./schemas/user')
 
 const mongoose = require("mongoose");
 
+const cors = require("cors");
+
 
 const uri = process.env.DB;
 
@@ -22,6 +24,8 @@ mongoose.connect(
     .catch((response) => console.log(response))
 
 const app = express();
+
+app.use(cors());
 
 app.use("/category", graphqlHTTP({
     schema: category,
