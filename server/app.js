@@ -8,6 +8,8 @@ const graphqlHTTP = require("express-graphql");
 
 const category = require('./schemas/types');
 
+const user = require('./schemas/user')
+
 const mongoose = require("mongoose");
 
 
@@ -21,9 +23,14 @@ mongoose.connect(
 
 const app = express();
 
-app.use("/graphql", graphqlHTTP({
+app.use("/category", graphqlHTTP({
     schema: category,
     graphiql: true
+}));
+
+app.use("/user", graphqlHTTP({
+  schema: user,
+  graphiql: true
 }));
 
 

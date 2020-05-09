@@ -39,7 +39,7 @@ class App extends React.Component {
       <ApolloProvider client={client}>
         <Switch>
          <Route exact path='/' component={ Login }></Route>
-         <Route exact path='/welcome' component= { Welcome}></Route>
+         <Route exact path='/welcome' component= { Welcome }></Route>
         </Switch>
       </ApolloProvider>
     );
